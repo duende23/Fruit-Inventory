@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/fruitListFragment">
+
+    <fragment
+        android:id="@+id/fruitListFragment"
+        android:name="com.villadevs.fruitinventory.FruitListFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_fruit_list" >
+        <action
+            android:id="@+id/action_fruitListFragment_to_fruitDetailFragment"
+            app:destination="@id/fruitDetailFragment" />
+        <action
+            android:id="@+id/action_fruitListFragment_to_addFruitFragment"
+            app:destination="@id/addFruitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fruitDetailFragment"
+        android:name="com.villadevs.fruitinventory.FruitDetailFragment"
+        android:label="@string/item_detail_fragment_title"
+        tools:layout="@layout/fragment_fruit_detail">
+        <argument
+            android:name="fruit_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_fruitDetailFragment_to_addFruitFragment"
+            app:destination="@id/addFruitFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFruitFragment"
+        android:name="com.villadevs.fruitinventory.AddFruitFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_add_fruit">
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="fruit_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_addFruitFragment_to_fruitListFragment"
+            app:destination="@id/fruitListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>
